@@ -2,7 +2,10 @@
     import React from 'react';
     import ReactDOM from 'react-dom';
 
-    import { Provider } from 'react-redux'
+    // router
+    import { BrowserRouter as Router } from 'react-router-dom'
+    // redux
+        import { Provider } from 'react-redux'
 
 // REDUX
     import { createStore } from 'redux'
@@ -23,7 +26,7 @@
 // -- ** START CODE ** -- //
 // -- ** START CODE ** -- //
 
-// Store Enhancers
+// CREATE - Store Enhancers
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // CREATE STORE - start
     const store = createStore(
@@ -35,10 +38,11 @@
     );
 // CREATE STORE - end
 
-
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <Router>
+            <App />
+        </Router>
     </Provider>, 
     document.getElementById('root')
 );
