@@ -1,5 +1,3 @@
-INITIAL COMMIT!
-
 # Redux Friends
 
 Topics:
