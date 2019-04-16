@@ -57,7 +57,7 @@ class Login extends Component {
         console.log('clicked in <Login />')
         // CALL ACTION CREATOR
         this.props.login_attempt(this.state).then(() => {
-            this.props.history.push('/homepage')
+            this.props.history.push('/homepage');
         })
 
 

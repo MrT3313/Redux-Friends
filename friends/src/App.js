@@ -13,13 +13,18 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route exact path='/login'
-          render={props => <Login {...props} />}
+        <Route 
+          exact path='/'
+          component={Login}
         />
         
-        <PrivateRoute exact path='/'
-          render={props => <Homepage {...props} /> }
+        <PrivateRoute 
+          exact path='/homepage'
+          component={Homepage}
         />
+        {/* <Route exact path='/homepage'
+          render={props => <Homepage {...props} /> }
+        /> */}
       </div>
     );
   }
