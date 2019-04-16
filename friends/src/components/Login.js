@@ -1,10 +1,17 @@
 // REACT
     import React, { Component } from 'react';
 
+// REDUX
+    // import { connect } from 'net';
+    import { connect } from 'react-redux';
+
 // MATERIAL IU
     import { Paper, TextField, Button } from '@material-ui/core'
 // STYLED COMPONENTS
     import styled from 'styled-components'
+
+// IMPORT ACTION CREATOR -> connect to store
+    import { login_attempt } from '../actions/login'
 
 // -- ** START CODE ** -- //
 // -- ** START CODE ** -- //
@@ -30,7 +37,7 @@
         
     `;
 // STYLING -- END
-export default class Login extends Component {
+class Login extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -39,10 +46,17 @@ export default class Login extends Component {
         }
     }
 
-    hander_onChange = e => {
+    hander_UserInputChange = e => {
         this.setState( 
             { [e.target.id] : e.target.value }
         )
+    }
+
+    handler_ButtonClick = e => {
+        e.preventDefault()
+        console.log('clicked in <Login />')
+        // CALL ACTION CREATOR
+        this.props.login_attempt(this.state)
     }
 
     render() {
@@ -53,19 +67,35 @@ export default class Login extends Component {
                     <Styled_TextField
                         id="input_userName"
                         label="USERNAME"
-                        onChange={this.hander_onChange}
+                        
+                        onChange={this.hander_UserInputChange}
                     />
                     <Styled_TextField
                         id="input_password"
                         label="PASSWORD"
-                        onChange={this.hander_onChange}
+                        
+                        onChange={this.hander_UserInputChange}
                     />
                     <Styled_Button 
                         variant="contained" 
-                        
+
+                        onClick={this.handler_ButtonClick}
                     >Submit</Styled_Button>
                 </Styled_Paper>
             </>
         )
     }
 }
+
+
+// Map State To Props
+    const mapStateToProps = state => {
+        return {
+            is_LoggingIn: state.is_LoggingIn,
+            loggedIn: state.loggedIn,
+            err: state.err
+        }
+    }
+
+
+export default connect(mapStateToProps, { login_attempt })(Login)

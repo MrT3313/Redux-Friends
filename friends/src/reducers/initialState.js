@@ -1,3 +1,7 @@
 export const initialState = {
-    friends: []
+    friends: [],
+
+    is_LoggingIn: false,
+    loggedIn: true,
+    err: ''
 }

@@ -20,7 +20,6 @@
     import App from './App';
 
 // REDUCERS
-    import { initialState } from './reducers/initialState'
     import { rootReducer } from './reducers';
 
 // -- ** START CODE ** -- //
@@ -31,7 +30,6 @@
 // CREATE STORE - start
     const store = createStore(
         rootReducer,
-        initialState,
         composeEnhancers(
             applyMiddleware(thunk, logger)
         )
