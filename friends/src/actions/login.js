@@ -15,19 +15,20 @@ export const login_attempt = (passedState) => {
     console.log('passed State from <Login />',passedState)
 
     // start - CREATE OBJECT TO PASS -- WITH 'CORRECT KEYS'
-        const objToPass = {
-            username: passedState.input_password,
-            password: passedState.input_userName
+        const creds = {
+            username: passedState.input_userName,
+            password: passedState.input_password,
         }
-        console.log('prepped OBJ for axios.POST',objToPass)
+        console.log('prepped OBJ for axios.POST',creds)
     // end - CREATE OBJECT TO PASS
 
+    // THUNK - START
     return (dispatch) => {
         // dispatch starting action
             dispatch({type: LOGIN_ATTEMPT})
         // Start API Call
         axios
-        .post(`http://localhost:5000`, objToPass)
+        .post(`http://localhost:5000/api/login`, creds)
         .then( res => {
             console.log('SUCCESSFUL axios.POST: ', res)
             dispatch({

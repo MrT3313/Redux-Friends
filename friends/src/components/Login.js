@@ -88,14 +88,16 @@ class Login extends Component {
 }
 
 
+// -V1- //
 // Map State To Props
-    const mapStateToProps = state => {
-        return {
-            is_LoggingIn: state.is_LoggingIn,
-            loggedIn: state.loggedIn,
-            err: state.err
-        }
-    }
+//     const mapStateToProps = state => {
+//         return {
+//             is_LoggingIn: state.is_LoggingIn,
+//             loggedIn: state.loggedIn,
+//             err: state.err
+//         }
+//     }
+// export default connect(mapStateToProps, { login_attempt })(Login)
 
-
-export default connect(mapStateToProps, { login_attempt })(Login)
+// -V2- //
+export default connect(null, { login_attempt })(Login)
