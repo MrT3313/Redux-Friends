@@ -27,7 +27,7 @@ export const login_attempt = (passedState) => {
             dispatch({type: LOGIN_ATTEMPT})
         // Start API Call
         axios
-        .post(`http://localhost:5000`, {objToPass})
+        .post(`http://localhost:5000`, objToPass)
         .then( res => {
             console.log('SUCCESSFUL axios.POST: ', res)
             dispatch({

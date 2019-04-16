@@ -5,6 +5,7 @@
 // COMPONENTS
   import Login from './components/Login'
   import Homepage from './components/Homepage'
+  import PrivateRoute from './components/PrivateRoute';
 
 // -- ** START CODE ** -- //
 // -- ** START CODE ** -- //
@@ -15,7 +16,8 @@ class App extends Component {
         <Route exact path='/login'
           render={props => <Login {...props} />}
         />
-        <Route exact path='/'
+        
+        <PrivateRoute exact path='/'
           render={props => <Homepage {...props} /> }
         />
       </div>
