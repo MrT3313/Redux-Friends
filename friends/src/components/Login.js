@@ -56,7 +56,11 @@ class Login extends Component {
         e.preventDefault()
         console.log('clicked in <Login />')
         // CALL ACTION CREATOR
-        this.props.login_attempt(this.state)
+        this.props.login_attempt(this.state).then(() => {
+            this.props.history.push('/homepage')
+        })
+
+
     }
 
     render() {

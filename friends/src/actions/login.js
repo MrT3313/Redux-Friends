@@ -27,13 +27,18 @@ export const login_attempt = (passedState) => {
         // dispatch starting action
             dispatch({type: LOGIN_ATTEMPT})
         // Start API Call
-        axios
+        return  axios
         .post(`http://localhost:5000/api/login`, creds)
         .then( res => {
             console.log('SUCCESSFUL axios.POST: ', res)
+            console.log('SUCCESSFUL axios.POST PAYLOAD: ', res.data.payload)
+            
+            //Set Local Storage
+            localStorage.setItem('token', res.data.payload)
+            
             dispatch({
                 type: LOGIN_SUCCESS,
-                payload: res.data
+                payload: res.data.payload
             })
         })
         .catch( err => {
