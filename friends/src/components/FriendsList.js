@@ -7,9 +7,23 @@
 // IMPORT ACTION CREATOR -> connect to store
     import { fetch_friends } from '../actions/fetch_friends'
 
+// STYLED COMPONENTS
+    import styled from 'styled-components'
+
+// COMPONENTS
+    import FriendCard from './FriendCard'
+
 // -- ** START CODE ** -- //
 // -- ** START CODE ** -- //
 
+
+const Styled_container = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    justify-content: center
+`;
 class FriendsList extends Component {
     // constructor(props) {
     //     super(props)
@@ -29,16 +43,11 @@ class FriendsList extends Component {
         return(
             <>
                 <h2>Friends List</h2>
-                <div>
-                {
-                    !this.props.friends && console.log('YOU HAVE NO FRIENDS ON PROPS')
-                }
-                {
-                    this.props.friends && this.props.friends.map( friend => {
-                        console.log(friend)
-                    })
-                }
-                </div>
+                <Styled_container>
+                    {this.props.friends.map( friend => {
+                        return <FriendCard friend={friend}/>
+                    })}
+                </Styled_container>
             </>
         )
     }
