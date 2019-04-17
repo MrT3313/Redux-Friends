@@ -12,6 +12,7 @@
 
 // COMPONENTS
     import FriendCard from './FriendCard'
+    import NewFriendForm from './NewFriendForm'
 
 // -- ** START CODE ** -- //
 // -- ** START CODE ** -- //
@@ -24,6 +25,12 @@ const Styled_container = styled.div`
 
     justify-content: center
 `;
+
+const Styled_div = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+
 class FriendsList extends Component {
     // constructor(props) {
     //     super(props)
@@ -41,8 +48,11 @@ class FriendsList extends Component {
     render() {
         {console.log(this.props)}
         return(
-            <>
+            <>  
                 <h2>Friends List</h2>
+                <Styled_div>
+                    <NewFriendForm />
+                </Styled_div>
                 <Styled_container>
                     {this.props.friends.map( friend => {
                         return <FriendCard friend={friend}/>
