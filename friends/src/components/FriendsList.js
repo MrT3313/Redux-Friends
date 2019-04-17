@@ -21,25 +21,38 @@ class FriendsList extends Component {
     componentDidMount() {
         console.log('inside FRIENDSLIST Component Did Mount')
         // CALL ACTION CREATOR
-        this.props.fetch_friends('sentFromComponentDidMount')
-
+        this.props.fetch_friends()
     }
 
     render() {
+        {console.log(this.props)}
         return(
-            <h2>Friends List</h2>        
+            <>
+                <h2>Friends List</h2>
+                <div>
+                {
+                    !this.props.friends && console.log('YOU HAVE NO FRIENDS ON PROPS')
+                }
+                {
+                    this.props.friends && this.props.friends.map( friend => {
+                        console.log(friend)
+                    })
+                }
+                </div>
+            </>
         )
     }
 }
 
 const mapStateToProps = state => {
     return {
-        friends: state.friends,
-        is_FetchingFriends: state.is_FetchingFriends,
-        is_SavingFriends: state.is_SavingFriends,
+        friends: state.friends_reducer.friends,
+        is_FetchingFriends: state.friends_reducer.is_FetchingFriends,
 
-        is_DeletingFriend: state.is_DeletingFriend,
-        is_UpdatingFriend: state.is_UpdatingFriend,
+        // is_SavingFriends: state.is_SavingFriends,
+
+        // is_DeletingFriend: state.is_DeletingFriend,
+        // is_UpdatingFriend: state.is_UpdatingFriend,
 
         err: state.err,
     }

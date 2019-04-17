@@ -26,10 +26,11 @@
             .get(`http://localhost:5000/api/friends`)
             .then( res => {
                 console.log( res )
+                console.log( res.data )
 
                 dispatch({
                     type: FRIENDS_FETCH_SUCCESS,
-                    // payload: res.data.payload
+                    payload: res.data
                 })
             })
             .catch( err => {

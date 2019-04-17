@@ -11,10 +11,10 @@
         friends: [],
 
         is_FetchingFriends: false,
-        is_SavingFriends: false,
+        // is_SavingFriends: false,
 
-        is_DeletingFriend: false,
-        is_UpdatingFriend: false,
+        // is_DeletingFriend: false,
+        // is_UpdatingFriend: false,
         
         err: ''
     }
@@ -30,6 +30,7 @@ export const friends_reducer = (state = initialState, action) => {
         case FRIENDS_FETCH_SUCCESS:
             return {
                 ...state,
+                friends: action.payload,
                 is_FetchingFriends: false,
                 err: ''
             }
