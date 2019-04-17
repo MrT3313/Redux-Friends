@@ -1,6 +1,7 @@
 // REACT
     import React, { Component } from 'react';
-
+    // React - Spinners
+        // import Loader from 'react-loader-spinner'
 // REDUX
     // import { connect } from 'net';
     import { connect } from 'react-redux';
@@ -57,7 +58,7 @@ class Login extends Component {
         console.log('clicked in <Login />')
         // CALL ACTION CREATOR
         this.props.login_attempt(this.state).then(() => {
-            this.props.history.push('/homepage');
+            this.props.history.push('/friends-list');
         })
 
 
@@ -68,6 +69,9 @@ class Login extends Component {
             <>
                 <Styled_Paper>
                     <h2>Please Login</h2>
+                    {/* { this.props.is_LoggingIn && 
+                        <p><Loader type="Ball-Triangle" color="#somecolor" height={80} width={80} /></p> 
+                    } */}
                     <Styled_TextField
                         id="input_userName"
                         label="USERNAME"
@@ -94,14 +98,14 @@ class Login extends Component {
 
 // -V1- //
 // Map State To Props
-//     const mapStateToProps = state => {
-//         return {
-//             is_LoggingIn: state.is_LoggingIn,
-//             loggedIn: state.loggedIn,
-//             err: state.err
-//         }
-//     }
-// export default connect(mapStateToProps, { login_attempt })(Login)
+
+    const mapStateToProps = state => {
+        return {
+            is_LoggingIn: state.is_LoggingIn,
+            err: state.err
+        }
+    }
+export default connect(mapStateToProps, { login_attempt })(Login)
 
 // -V2- //
-export default connect(null, { login_attempt })(Login)
+// export default connect(mapStateToProps, { login_attempt })(Login)

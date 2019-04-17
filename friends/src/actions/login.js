@@ -11,7 +11,7 @@ import axios from 'axios'
 
 // ACTION CREATOR
 export const login_attempt = (passedState) => {
-    console.log('inside Action Creator')
+    console.log('inside  LOGIN Action Creator')
     console.log('passed State from <Login />',passedState)
 
     // start - CREATE OBJECT TO PASS -- WITH 'CORRECT KEYS'

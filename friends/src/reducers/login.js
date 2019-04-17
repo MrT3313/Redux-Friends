@@ -12,18 +12,14 @@
 
 // REDUCER
     // initial state
-    // const initialState = {
-    //     is_LoggingIn: false,
-    //     loggedIn: true,
-    //     err: ''
-    // }
-
-    // export const login_reducer = (state, action) => {
-    export const login_reducer = (state = {
+    const initialState = {
         is_LoggingIn: false,
         loggedIn: true,
         err: ''
-    }, action) => {
+    }
+
+    // export const login_reducer = (state, action) => {
+    export const login_reducer = (state = initialState, action) => {
         switch(action.type) {
             case LOGIN_ATTEMPT:
                 console.log('login_reducer ACTION: ', action)
@@ -52,4 +48,3 @@
                 return state;
         }
     }
-        

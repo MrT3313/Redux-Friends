@@ -4,7 +4,7 @@
 
 // COMPONENTS
   import Login from './components/Login'
-  import Homepage from './components/Homepage'
+  import FriendsList from './components/FriendsList'
   import PrivateRoute from './components/PrivateRoute';
 
 // -- ** START CODE ** -- //
@@ -19,11 +19,11 @@ class App extends Component {
         />
         
         <PrivateRoute 
-          exact path='/homepage'
-          component={Homepage}
+          exact path='/friends-list'
+          component={FriendsList}
         />
-        {/* <Route exact path='/homepage'
-          render={props => <Homepage {...props} /> }
+        {/* <Route exact path='/friends-list'
+          render={props => <FriendsList {...props} /> }
         /> */}
       </div>
     );
