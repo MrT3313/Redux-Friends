@@ -5,17 +5,16 @@
         FRIENDS_FETCH_FAILURE
     } from '../actions/fetch_friends'
 
+    import {
+        ADD_FRIEND_SUCCESS
+    } from '../actions/add_friend'
+
 // REDUCER
     // Initial State
     const initialState = {
         friends: [],
 
         is_FetchingFriends: false,
-        // is_SavingFriends: false,
-
-        // is_DeletingFriend: false,
-        // is_UpdatingFriend: false,
-        
         err: ''
     }
 
@@ -27,6 +26,8 @@ export const friends_reducer = (state = initialState, action) => {
                 is_FetchingFriends: true,
                 err: ''
             }
+
+        // INITIAL SUCCESS
         case FRIENDS_FETCH_SUCCESS:
             return {
                 ...state,
@@ -34,6 +35,18 @@ export const friends_reducer = (state = initialState, action) => {
                 is_FetchingFriends: false,
                 err: ''
             }
+
+        // LINKED SUCCESS
+        // !! -- WHY DOES THIS WORK -- !!
+        case ADD_FRIEND_SUCCESS: 
+        return {
+            ...state,
+            friends: action.payload,
+            is_AddingFriend: false,
+            err: ''
+        }
+
+
         case FRIENDS_FETCH_FAILURE:
             return {
                 ...state,

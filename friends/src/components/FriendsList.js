@@ -66,12 +66,8 @@ class FriendsList extends Component {
 const mapStateToProps = state => {
     return {
         friends: state.friends_reducer.friends,
+
         is_FetchingFriends: state.friends_reducer.is_FetchingFriends,
-
-        // is_SavingFriends: state.is_SavingFriends,
-
-        // is_DeletingFriend: state.is_DeletingFriend,
-        // is_UpdatingFriend: state.is_UpdatingFriend,
 
         err: state.err,
     }
