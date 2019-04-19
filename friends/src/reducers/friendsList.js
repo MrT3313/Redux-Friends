@@ -1,4 +1,4 @@
-// ACTION TYPES
+// START -> ACTION TYPES
     import {
         FRIENDS_FETCH_START,
         FRIENDS_FETCH_SUCCESS,
@@ -6,16 +6,28 @@
     } from '../actions/fetch_friends'
 
     import {
-        ADD_FRIEND_SUCCESS
+        ADD_FRIEND_ATTEMPT,
+        ADD_FRIEND_SUCCESS,
+        ADD_FRIEND_FAILURE
     } from '../actions/add_friend'
+// end -> action types
 
-// REDUCER
+// START -> REDUCER
     // Initial State
     const initialState = {
-        friends: [],
+        // START -> pt 1
+            friends: [],
+            is_FetchingFriends: false,
+        // end -> pt 1
 
-        is_FetchingFriends: false,
-        err: ''
+        // START -> pt 2
+            is_AddingFriend: false,
+        // end -> pt 2
+        
+        // START -> ERROR
+            err: ''
+        // end -> error
+            
     }
 
 export const friends_reducer = (state = initialState, action) => {
@@ -36,23 +48,36 @@ export const friends_reducer = (state = initialState, action) => {
                 err: ''
             }
 
-        // LINKED SUCCESS
-        // !! -- WHY DOES THIS WORK -- !!
-        case ADD_FRIEND_SUCCESS: 
-        return {
-            ...state,
-            friends: action.payload,
-            is_AddingFriend: false,
-            err: ''
-        }
-
-
         case FRIENDS_FETCH_FAILURE:
             return {
                 ...state,
                 is_FetchingFriends: false,
                 err: 'FAILED API CALL'
             }
+
+        // ADDING FRIEND 
+
+        case ADD_FRIEND_ATTEMPT:
+            return {
+                ...state,
+                is_AddingFriend: false,
+                err: ''
+            }
+
+        case ADD_FRIEND_SUCCESS:
+            return {
+                ...state,
+                friends: action.payload,
+                is_AddingFriend: false,
+                err: ''
+            }
+        case ADD_FRIEND_FAILURE:
+            return {
+                ...state,
+                is_AddingFriend: false,
+                err: 'fix yo shit'
+            }
+
         default:
             return state
     }
