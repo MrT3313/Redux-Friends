@@ -19,16 +19,20 @@ console.log(action.payload)
     switch(action.type) {
         case LOGIN_START:
             return {
-                ...state
+                ...state,
+                is_LoggingIn: true,
             }
         case LOGIN_SUCCESS:
             return {
                 ...state,
+                is_LoggingIn: false,
                 userJWT: action.payload
             }
         case LOGIN_FAILURE:
             return {
-                ...state
+                ...state,
+                is_LoggingIn: false,
+                error: action.payload.data
             }
         // DEFAULT
         default:

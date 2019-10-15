@@ -42,6 +42,10 @@ useEffect(() => {
     console.log(userName, PW)
     // -- //
         props.a_login({userName, PW})
+        .then(() => {
+            props.history.push('/')
+        }) 
+
     }
     return(
         <StyledForm
